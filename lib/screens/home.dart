@@ -117,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                     int year = student['year'] ?? 0;
                     bool enrolled = student['enrolled'] ?? false;
 
-                    return Card(
+                  return GestureDetector(
+                    onTap: ()  => editStudent(student),
+                    child: Card(
                       margin: const EdgeInsets.symmetric(
                         vertical: 8.0,
                         horizontal: 16.0,
@@ -143,10 +145,6 @@ class _HomePageState extends State<HomePage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.blue),
-                              onPressed: () => editStudent(student),
-                            ),
-                            IconButton(
                               icon: const Icon(Icons.delete, color: Colors.red),
                               onPressed: () => deleteStudent(id),
                             ),
@@ -160,28 +158,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                    );
+                    ),
+                  );
                   },
                 ),
-          // Positioned(
-          //   bottom: 20.0,
-          //   right: 16.0,
-          //   child: FloatingActionButton.extended(
-          //     onPressed: () {
-          //       Navigator.of(context)
-          //           .push(
-          //         MaterialPageRoute(
-          //           builder: (context) => CreatePage(),
-          //         ),
-          //       )
-          //           .then((value) {
-          //         fetchData();
-          //       });
-          //     },
-          //     icon: const Icon(Icons.add),
-          //     label: const Text("Add Student"),
-          //   ),
-          // ),
         ],
       ),
     );
